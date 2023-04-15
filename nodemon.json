@@ -1,0 +1,9 @@
+{
+  "watch": ["./"],
+  "ext": ".ts,.js",
+  "ignore": ["node_modules"],
+  "exec": "ts-node ./bin/www.ts",
+  "execMap": {
+    "ts": "ts-node"
+  }
+}
