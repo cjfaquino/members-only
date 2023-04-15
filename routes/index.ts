@@ -1,9 +1,8 @@
 import { Router } from 'express';
+import { index } from '../controllers/messageController';
 const indexRouter = Router();
 
 /* GET home page. */
-indexRouter.get('/', (req, res, next) => {
-  res.render('index', { title: 'Express' });
-});
+indexRouter.get('/', index);
 
 export default indexRouter;
