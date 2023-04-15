@@ -1,0 +1,17 @@
+extends layout 
+
+block content 
+  h1= title 
+  form(action="", method="post") 
+    label(for="firstName") First Name
+      input#firstName(type="text", name='firstName') 
+    label(for="lastName") Last Name
+      input#lastName(type="text", name='lastName') 
+    label(for="email") Email 
+      input#email(type="email", name='email' )
+    label(for="password") Password
+      input#password(type="password", name='password')
+    label(for="confirmPass") Password
+      input#confirmPass(type="password", name='confirmPass')
+    
+    button(type="submit") Sign Up
