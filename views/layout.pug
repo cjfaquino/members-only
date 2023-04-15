@@ -12,7 +12,13 @@ html(lang="en")
         ul 
           li
             a(href="/") MembersOnly  
-          li 
-            a(href="/sign-up") Sign Up
+          if !user 
+            li 
+              a(href="/sign-up") Sign Up
+            li 
+              a(href="/log-in") Log In
+          else 
+            li 
+              a(href="/log-out") Log Out
 
     block content
