@@ -50,9 +50,11 @@ export const message_create_post: [
       const errors = validationResult(req);
 
       // create Message obj
+      const author = (req.user as IUser)._id;
       const message = new Message({
         title: req.body.title,
         text: req.body.text,
+        author,
       });
 
       if (!errors.isEmpty()) {
