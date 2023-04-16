@@ -3,6 +3,7 @@ import { index } from '../controllers/messageController';
 import {
   log_in_get,
   log_in_post,
+  log_out_get,
   sign_up_get,
   sign_up_post,
 } from '../controllers/userController';
@@ -24,5 +25,8 @@ indexRouter.get('/log-in', log_in_get);
 
 // POST Log in
 indexRouter.post('/log-in', log_in_post);
+
+// GET Log out
+indexRouter.get('/log-out', log_out_get);
 
 export default indexRouter;

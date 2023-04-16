@@ -87,3 +87,11 @@ export const log_in_post = [
     failureRedirect: '/log-in',
   }),
 ];
+
+export const log_out_get: RequestHandler = (req, res, next) => {
+  req.logout((err) => {
+    if (err) return next(err);
+
+    res.redirect('/');
+  });
+};
