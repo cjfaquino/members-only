@@ -10,6 +10,7 @@ import { Strategy as LocalStrategy } from 'passport-local';
 
 import indexRouter from './routes';
 import User from './models/User';
+import messageRouter from './routes/message';
 
 const app = express();
 
@@ -73,6 +74,7 @@ app.use(cookieParser());
 app.use(express.static('./public'));
 
 app.use('/', indexRouter);
+app.use('/message', messageRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -5,3 +5,7 @@ block content
   p Welcome to #{title}
   if currentUser
     p Welcome #{currentUser.firstName}
+    if currentUser.membership
+      p Member
+    else 
+      p Not a member
