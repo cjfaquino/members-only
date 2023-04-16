@@ -29,7 +29,12 @@ export const sign_up_post: [
     .trim()
     .normalizeEmail()
     .isEmail()
-    .withMessage('Email is required.'),
+    .withMessage('Email is required.')
+    .custom(async (value) => {
+      const user = await User.findOne({ email: value });
+      if (user) throw new Error('Email already exists.');
+      return true;
+    }),
   body('password')
     .trim()
     .isLength({ min: 8 })
