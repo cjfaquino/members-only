@@ -11,6 +11,7 @@ import { Strategy as LocalStrategy } from 'passport-local';
 import indexRouter from './routes';
 import User from './models/User';
 import messageRouter from './routes/message';
+import saveUser from './middlewares/saveUser';
 
 const app = express();
 
@@ -72,6 +73,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static('./public'));
+app.use(saveUser);
 
 app.use('/', indexRouter);
 app.use('/message', messageRouter);
@@ -83,8 +85,6 @@ app.use(function (req, res, next) {
 
 // error handler
 app.use((err: HttpError, req: Request, res: Response, next: NextFunction) => {
-  res.locals.currentUser = req.user;
-
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
