@@ -2,6 +2,7 @@ import { RequestHandler } from 'express';
 import { ValidationChain, body, validationResult } from 'express-validator';
 import Message from '../models/Message';
 import { IUser } from '../models/User';
+import createHttpError from 'http-errors';
 
 export const index: RequestHandler = async (req, res, next) => {
   try {
@@ -78,3 +79,15 @@ export const message_create_post: [
     }
   },
 ];
+
+export const message_delete_post: RequestHandler = async (req, res, next) => {
+  try {
+    // delete message object
+    await Message.findByIdAndRemove(req.params.id);
+
+    // success - redirect
+    res.redirect('/');
+  } catch (error) {
+    next(error);
+  }
+};

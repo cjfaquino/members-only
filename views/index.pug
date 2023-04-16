@@ -11,8 +11,11 @@ block content
         h2= msg.title 
         p= msg.text
         div 
-          if currentUser && currentUser.membership
+          if currentUser && (currentUser.membership || currentUser.isAdmin)
             p= msg.timestamp
             p= msg.author.fullName
           else 
             p #[strong Note]: Become a member to know who wrote this message and when.
+        if currentUser && currentUser.isAdmin
+          form(action=`/message/delete/${msg._id}`, method="post") 
+            button(type="submit") X
