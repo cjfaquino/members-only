@@ -1,4 +1,14 @@
-import { model, Schema } from 'mongoose';
+import mongoose, { Document, model, Schema } from 'mongoose';
+
+export interface IUser extends Document {
+  firstName: string;
+  lastName: string;
+  fullName: string;
+  email: string;
+  password: string;
+  membership: boolean;
+  isAdmin?: boolean;
+}
 
 const userSchema = new Schema({
   firstName: { type: String, required: true },
@@ -13,4 +23,4 @@ userSchema.virtual('fullName').get(function () {
   return `${this.lastName}, ${this.firstName}`;
 });
 
-export default model('User', userSchema);
+export default model<IUser>('User', userSchema);

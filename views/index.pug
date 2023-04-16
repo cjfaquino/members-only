@@ -5,7 +5,14 @@ block content
   p Welcome to #{title}
   if currentUser
     p Welcome #{currentUser.firstName}
-    if currentUser.membership
-      p Member
-    else 
-      p Not a member
+  ul 
+    for msg in messages 
+      li 
+        h2= msg.title 
+        p= msg.text
+        div 
+          if currentUser && currentUser.membership
+            p= msg.timestamp
+            p= msg.author.fullName
+          else 
+            p #[strong Note]: Become a member to know who wrote this message and when.

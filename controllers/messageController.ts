@@ -1,9 +1,33 @@
 import { RequestHandler } from 'express';
 import { ValidationChain, body, validationResult } from 'express-validator';
 import Message from '../models/Message';
+import { IUser } from '../models/User';
 
-export const index: RequestHandler = (req, res, next) => {
-  res.render('index', { title: 'Express' });
+export const index: RequestHandler = async (req, res, next) => {
+  try {
+    const perPage = 10;
+    const page = (req.query.page as unknown as number) || 1;
+
+    // display messages
+    const messagesP = Message.find()
+      .sort({ timestamp: -1 })
+      .skip(perPage * page - perPage)
+      .limit(perPage)
+      .populate('author');
+    const countP = Message.countDocuments();
+
+    const [messages, count] = await Promise.all([messagesP, countP]);
+
+    // success, so render
+    res.render('index', {
+      title: 'Express',
+      messages,
+      current: page,
+      pages: Math.ceil(count / perPage),
+    });
+  } catch (error) {
+    next(error);
+  }
 };
 
 export const message_create_get: RequestHandler = (req, res, next) => {
