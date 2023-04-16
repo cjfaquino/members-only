@@ -21,6 +21,8 @@ html(lang="en")
             li
               a(href="/message/new") New Message
             li 
+              p= currentUser.firstName
+              p= currentUser.email
               a(href="/log-out") Log Out
 
     block content

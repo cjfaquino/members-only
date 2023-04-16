@@ -3,8 +3,7 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  if currentUser
-    p Welcome #{currentUser.firstName}
+
   ul 
     for msg in messages 
       li 
