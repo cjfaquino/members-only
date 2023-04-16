@@ -12,7 +12,7 @@ html(lang="en")
         ul 
           li
             a(href="/") MembersOnly  
-          if !user 
+          if !currentUser 
             li 
               a(href="/sign-up") Sign Up
             li 

@@ -2,6 +2,7 @@ import { RequestHandler } from 'express';
 import bcryptjs from 'bcryptjs';
 import User from '../models/User';
 import { ValidationChain, body, validationResult } from 'express-validator';
+import passport from 'passport';
 
 export const sign_up_get: RequestHandler = (req, res, next) => {
   res.render('sign-up', { title: 'Sign Up' });
@@ -77,9 +78,12 @@ export const sign_up_post: [
 ];
 
 export const log_in_get: RequestHandler = (req, res, next) => {
-  res.send('TODO: Log In Get');
+  res.render('log-in', { title: 'Log In' });
 };
 
-export const log_in_post: RequestHandler = (req, res, next) => {
-  res.send('TODO: Log In Post');
-};
+export const log_in_post = [
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/log-in',
+  }),
+];

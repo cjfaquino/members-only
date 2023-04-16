@@ -7,7 +7,7 @@
 import debug, { Debugger } from 'debug';
 import createHttpError, { HttpError } from 'http-errors';
 import http from 'http';
-import mongoose from 'mongoose';
+import mongoose, { ConnectOptions } from 'mongoose';
 import app from '../app';
 
 const logger: Debugger = debug('members-only:server');
@@ -97,7 +97,10 @@ const main = async () => {
   if (!mongoDB) {
     throw createHttpError(404, 'MongDB not found');
   }
-  await mongoose.connect(mongoDB);
+  await mongoose.connect(mongoDB, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  } as ConnectOptions);
   logger('MongoDB connected');
 };
 main().catch((err) => console.log(err));

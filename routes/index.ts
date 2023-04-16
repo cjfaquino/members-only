@@ -6,10 +6,12 @@ import {
   sign_up_get,
   sign_up_post,
 } from '../controllers/userController';
+import saveUser from '../middlewares/saveUser';
+
 const indexRouter = Router();
 
 // GET Home page
-indexRouter.get('/', index);
+indexRouter.get('/', saveUser, index);
 
 // GET Sign Up page
 indexRouter.get('/sign-up', sign_up_get);
