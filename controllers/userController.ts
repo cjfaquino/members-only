@@ -65,19 +65,23 @@ export const sign_up_post: [
 
     // hash password field
     bcryptjs.hash(req.body.password, 10, async (err, hashedPass) => {
-      if (err) return next(err);
+      try {
+        if (err) return next(err);
 
-      // create User obj
-      const user = new User({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        password: hashedPass,
-      });
+        // create User obj
+        const user = new User({
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          email: req.body.email,
+          password: hashedPass,
+        });
 
-      // success - redirect
-      const results = await user.save();
-      res.redirect('/');
+        // success - redirect
+        await user.save();
+        res.redirect('/');
+      } catch (error) {
+        next(error);
+      }
     });
   },
 ];
