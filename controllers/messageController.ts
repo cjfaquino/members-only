@@ -18,12 +18,20 @@ export const index: RequestHandler = async (req, res, next) => {
 
     const [messages, count] = await Promise.all([messagesP, countP]);
 
+    const pages = Math.ceil(count / perPage);
+
+    if (page > pages) {
+      // request page that doesn't exist yet - redirect
+      res.redirect('/');
+      return;
+    }
+
     // success, so render
     res.render('index', {
       title: 'Express',
       messages,
       current: page,
-      pages: Math.ceil(count / perPage),
+      pages,
     });
   } catch (error) {
     next(error);

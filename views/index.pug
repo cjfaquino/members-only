@@ -18,3 +18,29 @@ block content
         if currentUser && currentUser.isAdmin
           form(action=`/message/delete/${msg._id}`, method="post") 
             button(type="submit") X
+  
+  - const startPage = Math.max(current - 1, 1)
+  - const endPage = Math.min(startPage + 2, pages)
+  ul.pagination 
+    if current > 1
+      li 
+        a(href=`/?page=${current - 1}`) Previous
+    if current > 2
+      li  
+        a(href=`/?page=1`) 1
+    if current > 3
+      li 
+        a(href=`/?page=${startPage - 1}`) ...
+    - for (let i = startPage; i <= endPage; i++) {
+      li
+        a(href=`/?page=${i}`)= i 
+    - }
+    if current < pages - 2 && pages > 4
+      li 
+        a(href=`/?page=${endPage + 1}`) ...
+    if current < pages - 1 && pages > 3
+      li  
+        a(href=`/?page=${pages}`)= pages
+    if current < pages 
+      li 
+        a(href=`/?page=${Number(current) + 1}`) Next
