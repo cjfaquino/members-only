@@ -5,7 +5,7 @@ import {
   auth_admin_get,
   auth_admin_post,
 } from '../controllers/authController';
-import requireLogin from '../middlewares/requiredLogin';
+import requireLogin from '../middlewares/requireLogin';
 
 const authRouter = Router();
 

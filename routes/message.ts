@@ -4,7 +4,7 @@ import {
   message_create_post,
   message_delete_post,
 } from '../controllers/messageController';
-import requireLogin from '../middlewares/requiredLogin';
+import requireLogin from '../middlewares/requireLogin';
 import requireAdmin from '../middlewares/requireAdmin';
 
 const messageRouter = Router();

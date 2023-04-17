@@ -12,7 +12,7 @@ import indexRouter from './routes';
 import User from './models/User';
 import messageRouter from './routes/message';
 import saveUser from './middlewares/saveUser';
-import requireLogin from './middlewares/requiredLogin';
+import requireLogin from './middlewares/requireLogin';
 import authRouter from './routes/_auth';
 
 const app = express();
