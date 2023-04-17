@@ -12,6 +12,8 @@ import indexRouter from './routes';
 import User from './models/User';
 import messageRouter from './routes/message';
 import saveUser from './middlewares/saveUser';
+import requireLogin from './middlewares/requiredLogin';
+import authRouter from './routes/_auth';
 
 const app = express();
 
@@ -77,6 +79,7 @@ app.use(saveUser);
 
 app.use('/', indexRouter);
 app.use('/message', messageRouter);
+app.use('/_auth', requireLogin, authRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
