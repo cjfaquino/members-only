@@ -4,7 +4,7 @@ block content
   h1= title 
   form(action="", method="post") 
     label(for="secret") Secret Key 
-      input#secret(type="text", name="secret" placeholder=`Enter "${title.toUpperCase()}" secret key...`)
+      input#secret(type="text", name="secret" placeholder=`Enter "${title.toUpperCase()}" secret key...` value=(secret === undefined ? '': secret))
     button(type="submit") Submit
   
   if errors 
