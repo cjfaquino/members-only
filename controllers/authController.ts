@@ -13,8 +13,11 @@ export const auth_member_post: [ValidationChain, RequestHandler] = [
     .trim()
     .exists()
     .withMessage('Key is required.')
-    .matches(process.env.MEMBERSHIP_SECRET || 'THE ODIN PROJECT')
-    .withMessage('This key is not valid.'),
+    .custom((value) => {
+      const secret = process.env.MEMBERSHIP_SECRET || 'THE ODIN PROJECT';
+      if (value !== secret) throw new Error('Key is not valid.');
+      return true;
+    }),
 
   // process request after trim & validation
   async (req, res, next) => {
