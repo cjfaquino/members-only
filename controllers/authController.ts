@@ -1,7 +1,7 @@
 import { RequestHandler } from 'express';
 
 export const auth_member_get: RequestHandler = (req, res, next) => {
-  res.send('TODO member GET');
+  res.render('upgrade_form', { title: 'Membership' });
 };
 
 export const auth_member_post: RequestHandler = (req, res, next) => {
@@ -9,7 +9,7 @@ export const auth_member_post: RequestHandler = (req, res, next) => {
 };
 
 export const auth_admin_get: RequestHandler = (req, res, next) => {
-  res.send('TODO admin GET');
+  res.render('upgrade_form', { title: 'Admin' });
 };
 
 export const auth_admin_post: RequestHandler = (req, res, next) => {
