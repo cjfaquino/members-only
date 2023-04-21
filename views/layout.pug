@@ -8,15 +8,15 @@ html(lang="en")
     title= title
   body
     header
-      nav
-        ul 
-          li
+      nav.navbar
+        ul.flex
+          li.nav-home
             a(href="/") MembersOnly  
           if !currentUser 
             li 
-              a(href="/sign-up") Sign Up
+              a.nav-link(href="/sign-up") Sign Up
             li 
-              a(href="/log-in") Log In
+              a.nav-link(href="/log-in") Log In
           else 
             li
               a(href="/message/new") New Message
