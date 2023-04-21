@@ -3,6 +3,7 @@
 
   --theme-rgb: 100, 100, 255;
   --theme-color: rgb(var(--theme-rgb));
+  --wrapper-width: 1200px;
 }
 
 *,
@@ -34,15 +35,22 @@ ul {
   flex-direction: column;
 }
 
+.wrapper {
+  --wrapper-padding: 10px;
+  max-width: var(--wrapper-width);
+  margin: 0 auto;
+  padding-left: var(--wrapper-padding);
+  padding-right: var(--wrapper-padding);
+}
+
 .navbar {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 2px;
 }
 
 .navbar ul {
-  max-width: 1200px;
+  max-width: var(--wrapper-width);
   align-items: center;
-  margin: 0 auto;
-  padding: 5px 10px;
+  padding: 10px;
   gap: 10px;
 }
 
