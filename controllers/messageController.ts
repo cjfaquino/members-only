@@ -28,7 +28,7 @@ export const index: RequestHandler = async (req, res, next) => {
 
     // success, so render
     res.render('index', {
-      title: 'Express',
+      title: 'Messages',
       messages,
       current: page,
       pages,

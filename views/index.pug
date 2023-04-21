@@ -1,23 +1,25 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 Messages
 
-  ul 
+  ul.messages.flex-col
     for msg in messages 
       li 
-        h2= msg.title 
+        h2= msg.title
+        if currentUser && (currentUser.membership || currentUser.isAdmin)
+          p.message-name #[span.grey by] #{msg.author.fullName}
         p= msg.text
-        div 
+        hr
+        div.message-info.flex 
           if currentUser && (currentUser.membership || currentUser.isAdmin)
-            p= msg.timestamp
-            p= msg.author.fullName
+            p.grey= msg.timestamp
+            if currentUser.isAdmin
+              form(action=`/message/delete/${msg._id}`, method="post") 
+                button.btn-delete(type="submit") 
+                  img(src="/images/trash-can.svg", alt="trash can")
           else 
-            p #[strong Note]: Become a member to know who wrote this message and when.
-        if currentUser && currentUser.isAdmin
-          form(action=`/message/delete/${msg._id}`, method="post") 
-            button(type="submit") X
+            p #[strong Note]#[span.grey : Become a member to know who wrote this message and when.]
   
   - const startPage = Math.max(current - 1, 1)
   - const endPage = Math.min(startPage + 2, pages)
