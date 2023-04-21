@@ -4,6 +4,7 @@
   --theme-rgb: 100, 100, 255;
   --theme-color: rgb(var(--theme-rgb));
   --wrapper-width: 1200px;
+  --footer-height: 40px;
 }
 
 *,
@@ -14,6 +15,11 @@
 
 body {
   margin: 0;
+  min-height: 100svh;
+}
+
+body > * {
+  width: 100%;
 }
 
 a {
@@ -130,4 +136,17 @@ ul {
 
 .pagination li.active:hover {
   background-color: rgb(240, 240, 240);
+}
+
+footer {
+  margin-top: auto;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  height: var(--footer-height);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px -1px 2px;
+}
+
+footer img {
+  height: 20px;
 }

@@ -6,7 +6,7 @@ html(lang="en")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel='stylesheet', href='/stylesheets/style.css')
     title= title
-  body
+  body.flex-col
     header
       nav.navbar
         ul.flex.wrapper
@@ -26,3 +26,9 @@ html(lang="en")
               a(href="/log-out") Log Out
     main.wrapper
       block content
+
+    block foot
+      footer.flex
+        span Copyright © 2023
+        a(href='https://github.com/cjfaquino', target='_blank', rel='noreferrer') cjfaquino
+        img(src="/images/github-mark.svg", alt="github icon")
