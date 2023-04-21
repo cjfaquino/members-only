@@ -2,7 +2,7 @@ extends layout
 
 block content 
   h1= title 
-  form(action="", method="post") 
+  form.forms.new-message-form.flex-col(action="", method="post") 
     label(for="title") Title 
       input#title(type="text", name="title" value=(undefined===message ? '' : message.title))
     label(for="text") Message 

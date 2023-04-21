@@ -2,7 +2,7 @@ extends layout
 
 block content 
   h1= title 
-  form(action="", method="post") 
+  form.forms.flex-col(action="", method="post") 
     label(for="firstName") First Name
       input#firstName(type="text", name='firstName' value=(undefined===user ? '' : user.firstName)) 
     label(for="lastName") Last Name
