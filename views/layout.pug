@@ -19,11 +19,18 @@ html(lang="en")
               a.nav-link(href="/log-in") Log In
           else 
             li
-              a(href="/message/new") New Message
-            li 
-              p= currentUser.firstName
-              p= currentUser.email
-              a(href="/log-out") Log Out
+              a.nav-link(href="/message/new") New Message
+            li.menu-container
+              input#menu-toggle(type="checkbox")
+              label.menu-button-container(for="menu-toggle") 
+                div.menu-button
+              ul.menu
+                li
+                  p= currentUser.firstName
+                li
+                  p.grey= currentUser.email
+                li
+                  a.nav-link(href="/log-out") Log Out
     main.wrapper
       block content
 
