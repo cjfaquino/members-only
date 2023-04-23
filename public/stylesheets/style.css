@@ -97,6 +97,10 @@ ul {
   padding-left: 0;
 }
 
+.nav-home span:last-child {
+  color: black;
+}
+
 .nav-link {
   background-color: var(--theme-color);
   color: white;
@@ -106,6 +110,16 @@ ul {
 
 .nav-link:hover {
   background-color: rgb(80, 80, 255);
+}
+
+.login {
+  background-color: white;
+  color: var(--theme-color);
+  border: 1px solid var(--theme-color);
+}
+
+.login:hover {
+  background-color: rgb(235, 235, 235);
 }
 
 .menu-container {
