@@ -13,7 +13,7 @@ block content
         hr
         div.message-info.flex 
           if currentUser && (currentUser.membership || currentUser.isAdmin)
-            p.grey= msg.timestamp
+            p.grey= msg.timestamp_formatted
             if currentUser.isAdmin
               form(action=`/message/delete/${msg._id}`, method="post") 
                 button.btn-delete(type="submit") 
